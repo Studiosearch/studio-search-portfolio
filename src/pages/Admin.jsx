@@ -60,8 +60,21 @@ export default function Admin() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <h1 className="font-display" style={styles.title}>Painel <span className="text-primary">Admin</span></h1>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                 <p style={styles.subtitle}>Gerencie os conteúdos do seu portfólio.</p>
+                
+                <button 
+                  onClick={() => {
+                    const json = JSON.stringify(data);
+                    navigator.clipboard.writeText(json);
+                    alert('Código de Backup copiado! Mande para o seu assistente de IA para salvar permanentemente no código.');
+                  }}
+                  className="btn"
+                  style={styles.backupBtn}
+                >
+                  <Save size={16} /> Gerar Backup para o Código
+                </button>
+
                 <div style={styles.storageMeter}>
                   <div style={{ ...styles.storageBar, width: `${storageUsage()}%`, backgroundColor: storageUsage() > 80 ? '#ff4d4d' : 'var(--primary)' }} />
                   <span style={styles.storageLabel}>Espaço: {storageUsage()}%</span>
@@ -320,6 +333,14 @@ const styles = {
   },
   subtitle: {
     color: 'var(--muted-foreground)',
+  },
+  backupBtn: {
+    backgroundColor: '#3b82f6',
+    color: 'white',
+    fontSize: '0.8rem',
+    padding: '0.5rem 1rem',
+    borderRadius: '99px',
+    gap: '0.5rem',
   },
   tabs: {
     display: 'flex',
