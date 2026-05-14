@@ -103,7 +103,7 @@ export default function Branding() {
         {/* Magnetic Roulette / Curved Carousel */}
         <section style={styles.carouselSection}>
           <div style={styles.carouselContainer}>
-            {data.branding.slice(0, 3).map((item, index) => {
+            {data.branding.map((item, index) => {
               const diff = index - selectedIndex;
               const angle = diff * 25; // Degrees
               const radius = 300;
@@ -128,12 +128,27 @@ export default function Branding() {
                   onClick={() => setSelectedIndex(index)}
                   whileHover={{ scale: index === selectedIndex ? 1.25 : 0.9 }}
                 >
-                  <span style={{ 
-                    ...styles.logo, 
-                    color: index === selectedIndex ? 'var(--primary-foreground)' : 'white' 
-                  }}>
-                    {item.logo}
-                  </span>
+                  <div style={styles.logoContainer}>
+                    {item.brandLogo ? (
+                      <img 
+                        src={item.brandLogo} 
+                        alt={item.name} 
+                        style={{ 
+                          width: '80%', 
+                          height: '80%', 
+                          objectFit: 'contain',
+                          filter: index === selectedIndex ? 'none' : 'grayscale(1) brightness(2)'
+                        }} 
+                      />
+                    ) : (
+                      <span style={{ 
+                        ...styles.logo, 
+                        color: index === selectedIndex ? 'var(--primary-foreground)' : 'white' 
+                      }}>
+                        {item.logo}
+                      </span>
+                    )}
+                  </div>
                 </motion.div>
               );
             })}
@@ -141,7 +156,7 @@ export default function Branding() {
           
           <div style={styles.controls}>
             <button className="btn glass" onClick={handlePrev} style={styles.controlBtn}>←</button>
-            <div style={styles.indicatorLabel}>Gire para navegar (Top 3)</div>
+            <div style={styles.indicatorLabel}>Gire para navegar</div>
             <button className="btn glass" onClick={handleNext} style={styles.controlBtn}>→</button>
           </div>
         </section>
@@ -248,6 +263,15 @@ const styles = {
     justifyContent: 'center',
     cursor: 'pointer',
     transition: 'border-color 0.3s, background 0.3s',
+  },
+  logoContainer: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    borderRadius: '1.2rem',
   },
   logo: {
     fontSize: '1.5rem',

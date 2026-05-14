@@ -22,7 +22,7 @@ export default function Videos() {
       style={styles.container}
     >
       <div style={styles.feed}>
-        {data.videos.slice(0, 3).map((video) => (
+        {data.videos.map((video) => (
           <VideoItem key={video.id} video={video} />
         ))}
       </div>

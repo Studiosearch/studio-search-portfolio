@@ -236,7 +236,8 @@ function Form({ category, onSubmit }) {
   const fields = {
     branding: [
       { name: 'name', label: 'Nome do Projeto', type: 'text' },
-      { name: 'logo', label: 'Sigla/Logo (Texto)', type: 'text' },
+      { name: 'logo', label: 'Sigla (Texto - fallback)', type: 'text' },
+      { name: 'brandLogo', label: 'Logo da Marca (PNG)', type: 'file' },
       { name: 'images', label: 'Upload dos Mockups (Múltiplos)', type: 'file', multiple: true },
     ],
     videos: [
