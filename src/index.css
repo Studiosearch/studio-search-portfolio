@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Cormorant+Garamond:wght@500;600&display=swap");
+
+:root {
+  /* Studio Search Colors */
+  --primary: #c8ff1a; /* oklch(0.91 0.22 118) approx */
+  --primary-foreground: #1d2024;
+  --background: #18191c; /* oklch(0.18 0.01 285) approx */
+  --foreground: #f0f0f2; /* oklch(0.95 0.004 85) approx */
+  --card: #1f2125;
+  --card-foreground: #f0f0f2;
+  --muted: #26282c;
+  --muted-foreground: #a1a3a8;
+  --border: rgba(255, 255, 255, 0.1);
+  --ring: #c8ff1a;
+
+  /* Typography */
+  --font-sans: "Outfit", sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  
+  /* Studio Search signature dark mode gradient */
+  background-image: 
+    radial-gradient(circle at top left, rgba(200, 255, 26, 0.05), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(185, 166, 255, 0.05), transparent 30%);
+}
+
+::selection {
+  background: rgba(200, 255, 26, 0.7);
+  color: #1d2024;
+}
+
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Badge Neon Effect */
+.neon-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 10px rgba(200, 255, 26, 0.3), inset 0 0 10px rgba(200, 255, 26, 0.1);
+  text-shadow: 0 0 5px rgba(200, 255, 26, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(31, 33, 37, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Button Base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: inherit;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Ink bleed reveal specific */
+.ink-reveal-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ink-mask {
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="black"/></svg>');
+  mask-size: 0%;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  transition: mask-size 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.ink-mask.revealed {
+  mask-size: 300%;
+}
