@@ -36,7 +36,7 @@ export default function Sites() {
       exit={{ opacity: 0 }}
       style={styles.container}
     >
-      <div className="container" style={styles.content}>
+      <div className="container sites-content-grid" style={styles.content}>
         <div style={styles.sidebar}>
           <h1 className="font-display" style={styles.pageTitle}>Web <span className="text-primary">Exp</span></h1>
           <div style={styles.siteList}>
@@ -67,7 +67,7 @@ export default function Sites() {
               borderRadius: devices[currentDevice].borderRadius,
             }}
             transition={{ type: "spring", stiffness: 200, damping: 25 }}
-            className="glass"
+            className="glass device-scale-mobile"
             style={styles.deviceFrame}
           >
             {isLoading && (

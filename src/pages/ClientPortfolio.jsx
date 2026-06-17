@@ -30,7 +30,7 @@ export default function ClientPortfolio() {
       id="client-portfolio-root"
     >
       {/* Editorial Hero Section */}
-      <section style={styles.heroSection}>
+      <section className="mobile-hero-padding" style={styles.heroSection}>
         <div style={styles.gridOverlay} />
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ export default function ClientPortfolio() {
         >
           <img src="/assets/logo.png" alt="Logo" style={{ height: '50px', marginBottom: '3rem', opacity: 1, filter: 'brightness(0) invert(1)' }} />
           
-          <h1 className="font-display" style={styles.heroText}>
+          <h1 className="font-display mobile-hero-text" style={styles.heroText}>
             Com um portfólio de mais de 100 marcas transformadas, 
             <span className="text-primary"> O Studio Search</span> é uma boutique de marketing 
             que desenvolve soluções criativas e estratégicas para negócios que buscam 

@@ -6,7 +6,15 @@ export default function Branding() {
   const { data } = usePortfolio();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Reset internal image index when project changes
   useEffect(() => {
     setCurrentImageIndex(0);
@@ -105,8 +113,8 @@ export default function Branding() {
           <div style={styles.carouselContainer}>
             {data.branding.map((item, index) => {
               const diff = index - selectedIndex;
-              const angle = diff * 25; // Degrees
-              const radius = 300;
+              const angle = diff * (isMobile ? 35 : 25); // Degrees
+              const radius = isMobile ? 140 : 300;
               const x = Math.sin(angle * (Math.PI / 180)) * radius;
               const y = (1 - Math.cos(angle * (Math.PI / 180))) * radius;
               
